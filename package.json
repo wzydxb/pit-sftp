@@ -1,0 +1,68 @@
+{
+  "name": "pitsftp",
+  "displayName": "pitSftp",
+  "description": "",
+  "version": "0.0.2",
+  "publisher": "wuziyang",
+  "icon": "logoq1.png",
+  "engines": {
+    "vscode": "^1.6.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:pitsftp.upload",
+    "workspaceContains:.vscode/pitSftp.json"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pitsftp.upload",
+        "title": "上传至目标服务器",
+        "category": "SFTP1"
+      },
+      {
+        "command": "pitsftp.inputPassWord",
+        "title": "密码加密",
+        "category": "SFTP1"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "true",
+          "command": "pitsftp.upload",
+          "group": "6_pitSftp"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "pitsftp.inputPassWord",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+f11",
+        "when": "true"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "pnpm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "dependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "node-rsa": "^1.1.1",
+    "ssh2-sftp-client": "^9.0.4",
+    "typescript": "^4.9.5"
+  }
+}
